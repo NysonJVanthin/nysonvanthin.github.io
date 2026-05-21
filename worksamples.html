@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Work Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="java.js"></script>
+</head>
+<body data-theme="ousia">
+
+    <div id="main-wrapper">
+        <header>
+            <h1>Website is a work in progress....</h1>
+        </header>
+        <main>
+            <section class="mainstart-text">
+                Gotta Upload Some Work Samples
+            </section>
+            <section>
+                <h1> 
+                    Madam Herta is a peerless gem. Madam Herta is an unrivaled genius. Madam Herta is an inimitable beauty.
+                </h1>
+                <br>
+            </section>
+        </main>
+        <footer>
+            <div class="footer-content">
+                <span class="footer-text">Sayonara</span>
+                
+                <div class="footer-socials">
+                    <a href="https://www.linkedin.com/in/nyson-vanthin-6216b73a6/" target="_blank" rel="noopener noreferrer" class="footer-icon-btn" title="LinkedIn Profile">
+                        <i class="fa-brands fa-linkedin"></i>
+                    </a>
+                    
+                    <a href="https://github.com/NysonJVanthin" target="_blank" rel="noopener noreferrer" class="footer-icon-btn" title="GitHub Profile">
+                        <i class="fa-brands fa-github"></i>
+                    </a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <div class="nav-container" id="genshinNav">
+        
+        <div class="nav-wheel"></div>
+
+        <div class="nav-center" onclick="toggleMenu()">
+            <i class="fa-solid fa-map" id="hub-icon"></i>
+        </div>
+
+        <a href="index.html" class="nav-item" style="--angle: 45deg; --radius: 160px;">
+            <i class="fa-solid fa-house"></i>
+            <span class="nav-label">Home</span>
+        </a>
+        
+        <a href="resume.html" class="nav-item" style="--angle: 135deg; --radius: 160px;">
+            <i class="fa-solid fa-file-invoice"></i>
+            <span class="nav-label">Resume</span>
+        </a>
+        
+        <a href="certifications.html" class="nav-item" style="--angle: 225deg; --radius: 160px;">
+            <i class="fa-solid fa-award"></i>
+            <span class="nav-label">Certs</span>
+        </a>
+        
+        <a href="worksamples.html" class="nav-item" style="--angle: 315deg; --radius: 160px;">
+            <i class="fa-solid fa-laptop-code"></i>
+            <span class="nav-label">Work</span>
+        </a>
+
+        <div class="nav-controls">
+            <button class="nav-action-btn form-toggle-btn" onclick="toggleForm()" title="Switch Alignment Form">
+                <i class="fa-solid fa-droplet" id="form-icon"></i> <span id="form-text">Pneuma Form</span>
+            </button>
+            
+            <button class="nav-action-btn close-btn" onclick="toggleMenu()">
+                <i class="fa-solid fa-xmark"></i> Close
+            </button>
+        </div>
+
+    </div>
+</body>
+</html>

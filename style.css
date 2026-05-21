@@ -1,0 +1,491 @@
+/* --- ACCURATE FURINA DUAL-FORM COLOR PALETTE --- */
+
+body[data-theme="ousia"] {
+  /* Furina's Dark Tailcoat Design Elements */
+  --bg-main: #0c111d;               /* Deep black-navy velvet coat fabric */
+  --bg-gradient: radial-gradient(circle at center, #152038 0%, #0c111d 100%);
+  --bg-menu-hub: #111a2e;           /* Inner lining dark navy */
+  --bg-menu-item: #111a2e;
+  --border-menu: #1e2f4f;           /* Shadowed trim */
+  --text-primary: #f0f4fa;          /* Pale silver hair highlights */
+  --text-accent: #c2b49a;           /* Exact muted gold embroidery/buttons trim */
+  --hydro-glow: #25cdff;            /* Bright Ousia Vision Hydro blue flare */
+  --shadow-color: rgba(0, 0, 0, 0.85);
+}
+
+body[data-theme="pneuma"] {
+  /* Furina's Light Singer Design Elements */
+  --bg-main: #e6ebf5;               /* Brilliant silver-white silk coat */
+  --bg-gradient: radial-gradient(circle at center, #ffffff 0%, #d5e0f2 100%);
+  --bg-menu-hub: #f7fafc;           /* Pure white vestment base */
+  --bg-menu-item: #f7fafc;
+  --border-menu: #a8c2ed;           /* Soft pastel blue cuffs */
+  --text-primary: #182b54;          /* Deep royal blue accent fabrics */
+  --text-accent: #214385;           /* Rich French blue lapels & shorts */
+  --hydro-glow: #3ca9ff;            /* Brilliant Pneuma Vision Hydro light */
+  --shadow-color: rgba(24, 43, 84, 0.18);
+}
+
+/* --- ELEMENT ARCHITECTURE --- */
+body {
+  background-color: var(--bg-main);
+  margin: 0px;
+  padding: 0px;
+  font-family: 'Poppins', sans-serif;
+  min-height: 100vh;
+  color: var(--text-primary);
+  transition: 0.4s ease, color 0.4s ease;
+}
+
+h1 {
+  color: var(--text-accent);
+  text-align: center;
+  transition: color 0.4s ease;
+}
+
+header {
+  text-align: center;
+  margin: 0;
+  padding: 100px 0px 30px 0px; 
+}
+
+p {
+  font-family: verdana;
+  font-size: 20px;
+}
+
+section {
+  text-align: center;
+  margin: 20px auto;
+  font-size: 1.2rem;
+}
+
+.mainstart-text {
+  color: var(--text-accent);
+}
+
+ h1 {
+  font-size: 2rem;
+  color: var(--text-primary);
+  max-width: 800px;
+  margin: 40px auto;
+  line-height: 1.5;
+}
+
+
+
+/* --- THE MAIN CONTENT AREA --- */
+main {
+  flex: 1; 
+}
+
+/* --- FLOATING FOOTER POSITIONING (LOCK DOWN) --- */
+footer {
+  /* Forces the footer to bind to the screen viewport, completely 
+     ignoring parent flexbox or grid centering adjustments */
+  position: fixed !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  
+  width: 100% !important;
+  z-index: 80;
+  padding: 15px 0;
+  
+  background: rgba(var(--bg-menu-hub), 0.85); 
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  
+  border-top: 1px dashed var(--border-menu);
+  box-shadow: 0 -5px 25px var(--shadow-color);
+  
+  /* Ensures the layout doesn't inherit centering from parent elements */
+  align-self: flex-end; 
+  transform: none !important; /* Prevents menu scale animations from pulling it upward */
+  
+  transition: background-color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Updated alignment architecture */
+.footer-content {
+  /* 1. Change this from 1200px to 100% so it spans the entire screen width */
+  width: 95%; 
+  max-width: 100%; 
+  
+  /* 2. Strip the side padding down to 0px to remove the safety buffer */
+  padding: 0 0px; 
+  
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr; 
+  align-items: center;
+}
+
+/* Forces the text to stay mathematically dead center */
+.footer-text {
+  grid-column: 2; 
+  font-size: 1.1rem;
+  color: var(--text-accent);
+  font-weight: 500;
+  letter-spacing: 1px;
+  transition: color 0.4s ease;
+  text-align: center;
+}
+
+/* Forces the socials container to align cleanly to the bottom right */
+.footer-socials {
+  grid-column: 3;
+  display: flex;
+  justify-content: flex-end; /* Snaps icons to the far right */
+  gap: 30px; 
+}
+
+/* Social Buttons */
+.footer-icon-btn {
+  color: var(--text-primary);
+  font-size: 1.4rem;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease;
+}
+
+.footer-icon-btn:hover {
+  color: var(--hydro-glow);
+  transform: translateY(-3px);
+  text-shadow: 0 0 10px var(--hydro-glow);
+}
+
+/* Mobile check: On small viewports, stack smoothly if room gets tight */
+@media screen and (max-width: 480px) {
+  .footer-content {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 0 20px;
+  }
+  .footer-socials {
+      justify-content: center;
+  }
+}
+
+/* --- DYNAMIC BLURRING WRAPPER --- */
+#main-wrapper {
+  width: 100%;
+  min-height: 100vh;
+  transition: filter 0.5s ease;
+  background: var(--bg-gradient);
+  padding-bottom: 80px;
+}
+
+body.menu-active #main-wrapper {
+  filter: blur(10px);
+}
+
+/* Change it to target just the main content, leaving the footer clean */
+body.menu-active main {
+  filter: blur(8px);
+  pointer-events: none; /* Stops users from clicking content while menu is open */
+}
+/* --- DYNAMIC NAV WHEEL ARCHITECTURE --- */
+.nav-container {
+  position: fixed;
+  top: 40px;
+  right: 40px;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 90;
+  transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.nav-container.open {
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+  width: 500px;
+  height: 500px;
+}
+
+/* Center Hub Button */
+.nav-center {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  background: var(--bg-menu-hub); 
+  border: 2px solid var(--border-menu);
+  border-radius: 50%;
+  color: var(--text-accent);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: 0 4px 15px var(--shadow-color), inset 0 0 10px rgba(0,0,0,0.3);
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.nav-center i {
+  font-size: 1.6rem;
+  transition: transform 0.5s ease;
+}
+
+.nav-center:hover {
+  color: var(--hydro-glow);
+  border-color: var(--hydro-glow);
+  box-shadow: 0 0 25px var(--hydro-glow);
+}
+
+.nav-container.open .nav-center i {
+  transform: scale(1.1) rotate(180deg);
+}
+
+/* Outer Visual Circular Ring Track */
+.nav-wheel {
+  position: absolute;
+  width: 380px;
+  height: 380px;
+  border: 1px dashed var(--border-menu);
+  border-radius: 50%;
+  transform: scale(0);
+  opacity: 0;
+  transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  pointer-events: none;
+}
+
+.nav-container.open .nav-wheel {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* --- SELECTION WHEEL BUTTONS --- */
+.nav-item {
+  position: absolute;
+  width: 75px;
+  height: 75px;
+  background: var(--bg-menu-item);
+  border: 1px solid var(--border-menu);
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--text-primary);
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 6px 20px var(--shadow-color);
+  transform: translate(0, 0) scale(0);
+  opacity: 0;
+  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.15), opacity 0.3s, background 0.3s, border 0.3s, color 0.3s;
+}
+
+.nav-container.open .nav-item {
+  opacity: 1;
+  transform: rotate(var(--angle)) translate(var(--radius)) rotate(calc(-1 * var(--angle))) scale(1);
+}
+
+/* Hover swaps to the alternative alignment state look dynamically */
+.nav-item:hover {
+  background: var(--text-primary);
+  color: var(--bg-menu-hub);
+  border-color: var(--hydro-glow);
+  box-shadow: 0 0 25px var(--hydro-glow);
+  transform: rotate(var(--angle)) translate(var(--radius)) rotate(calc(-1 * var(--angle))) scale(1.12) !important;
+}
+
+.nav-item i {
+  font-size: 1.4rem;
+  margin-bottom: 2px;
+}
+
+.nav-label {
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 1px;
+  opacity: 0.9;
+}
+
+/* --- BUTTON CONTROLS SYSTEM --- */
+.nav-controls {
+  position: absolute;
+  bottom: -45px;
+  display: flex;
+  gap: 15px;
+  opacity: 0;
+  transform: translateY(20px) scale(0.8);
+  pointer-events: none;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.15);
+}
+
+.nav-container.open .nav-controls {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.nav-action-btn {
+  background: var(--bg-menu-hub);
+  border: 1px solid var(--border-menu);
+  color: var(--text-primary);
+  padding: 8px 25px;
+  border-radius: 20px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px var(--shadow-color);
+  transition: all 0.3s ease;
+}
+
+.nav-action-btn:hover {
+  background: var(--text-primary);
+  color: var(--bg-menu-hub);
+  border-color: var(--hydro-glow);
+  box-shadow: 0 0 15px var(--hydro-glow);
+}
+
+.form-toggle-btn i {
+  color: var(--hydro-glow);
+  text-shadow: 0 0 8px var(--hydro-glow);
+}
+
+.resume {
+    max-width: 100%;    
+    height: auto;        
+    display: block;      
+    margin-left: auto;   
+    margin-right: auto;
+  }
+  
+
+/* Make It Work on Mobile Somewhat more*/
+@media screen and (max-width: 600px) {
+  /* Scale down the active open menu area so it never clips off the screen */
+  .nav-container.open {
+      width: 100vw;
+      height: 100vw;
+      max-width: 360px;
+      max-height: 360px;
+  }
+
+  /* Bring the circular track layout closer to the center hub */
+  .nav-wheel {
+      width: 280px;
+      height: 280px;
+  }
+
+  /* Adjust the diagonal fan-out radius so buttons don't fly off-screen */
+  .nav-container.open .nav-item {
+      /* Reduces the radius from 160px down to 110px for small screens */
+      transform: rotate(var(--angle)) translate(110px) rotate(calc(-1 * var(--angle))) scale(0.9);
+  }
+
+  /* Keep the hover scale check modest on touch release */
+  .nav-item:hover {
+      transform: rotate(var(--angle)) translate(110px) rotate(calc(-1 * var(--angle))) scale(1) !important;
+  }
+
+  /* Shrink the size of the buttons slightly to match the smaller layout */
+  .nav-item {
+      width: 65px;
+      height: 65px;
+  }
+  
+  .nav-item i {
+      font-size: 1.2rem;
+  }
+
+  /* Bring the bottom control buttons up closer to the smaller wheel */
+  .nav-controls {
+      bottom: -20px;
+      gap: 8px;
+  }
+  
+  .nav-action-btn {
+      padding: 6px 16px;
+      font-size: 0.7rem;
+  }
+}
+/* Download Button*/
+.btn {
+  display: block;
+  margin: auto;
+  background-color: var(--bg-menu-item);
+  color: var(--text-accent);
+  width: 223px;
+  text-decoration: none;
+  padding: 1.1em;
+  border-radius: 100px; 
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2), 0 0 15px var(--hydro-glow); 
+  transition: all 0.4s ease;
+  border: 1px solid var(--border-menu);
+  text-align: center;
+}
+
+.btn:hover {
+  /* Flips the colors into the highlight state on hover */
+  background-color: var(--text-primary);
+  color: var(--bg-menu-hub);
+  border-color: var(--hydro-glow);
+  
+  /* Creates an intense Hydro vision style flash on hover */
+  box-shadow: 0 0 35px var(--hydro-glow); 
+}
+
+/* Custom Scroll Bar So It Looks Sleek*/
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  /* Tells the browser window to stop handling the scrollbar directly */
+  overflow: hidden; 
+}
+
+/* --- 2. FORCE MAIN WRAPPER TO BE THE SCROLL CONTAINER --- */
+#main-wrapper {
+  width: 100%;
+  height: 100vh; /* Lock it to viewport height */
+  
+  /* Tells the wrapper to create its own internal scrolling system. 
+     This bypasses Chrome's global overlay lock! */
+  overflow-y: auto; 
+  overflow-x: hidden;
+  
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 80px; 
+  background: var(--bg-gradient);
+  transition: filter 0.5s ease;
+}
+
+/* --- 3. TARGET THE WRAPPER SCROLLBAR SPECIFICALLY --- */
+#main-wrapper::-webkit-scrollbar {
+  width: 10px !important;
+  background-color: var(--bg-main) !important;
+}
+
+#main-wrapper::-webkit-scrollbar-track {
+  background-color: var(--bg-main) !important;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3) !important;
+}
+
+#main-wrapper::-webkit-scrollbar-thumb {
+  background-color: var(--border-menu) !important;
+  border-radius: 100px !important;
+  border: 2px solid var(--bg-main) !important;
+  transition: background-color 0.3s ease;
+}
+
+#main-wrapper::-webkit-scrollbar-thumb:hover {
+  background-color: var(--hydro-glow) !important;
+}
+
+/* Firefox Fallback for the wrapper */
+#main-wrapper {
+  scrollbar-color: var(--border-menu) var(--bg-main);
+  scrollbar-width: thin;
+}
