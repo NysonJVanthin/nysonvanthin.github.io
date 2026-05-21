@@ -1,5 +1,5 @@
 # Small Facts About Me! ༉‧₊˚.
-  Welcome to my github profile! As always my name is Nyson to get some confusion out of the way it is pronouced like the car Nissan.
+  Welcome to my github profile! As always my name is Nyson to get some confusion out of the way it is pronouced like the car Nissan (nee-saan).
   I am a Information Technology Services student that is constantly learning! 
 
 
