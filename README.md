@@ -6,5 +6,5 @@
 # *ੈ✩‧₊˚༺☆༻*ੈ✩‧₊˚ Hobbies!
   Some hobbies that I enjoy are drawing, playing video games, playing soccer, and reading from time to time!
 
-# ꧁⎝ 𓆩༺✧༻𓆪 ⎠꧂ Skills
+# ✩₊˚.⋆☾⋆⁺₊✧ Skills
   Skills I am confident and proficient in are
