@@ -489,3 +489,49 @@ html, body {
   scrollbar-color: var(--border-menu) var(--bg-main);
   scrollbar-width: thin;
 }
+
+/* --- TOP LEFT LOGO STYLING --- */
+.logo {
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  z-index: 85; /* Sits cleanly above content but under the active nav wheel modal */
+  display: inline-block;
+  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), filter 0.3s ease;
+}
+
+.logo img {
+  width: 60px;         /* Base width size of the logo */
+  height: auto;
+  background: transparent; /* Ensures no background color stands out */
+  border: none;        /* Completely removes the square border line */
+  box-shadow: none;    /* Removes the default box shadow */
+  transition: filter 0.3s ease; /* Transitions the glow smoothly */
+}
+
+/* Hover effects: Scales up and adds a clean outer glow directly to the logo shape */
+.logo:hover {
+  transform: scale(1.25); /* Increases size by 25% on hover */
+}
+
+.logo:hover img {
+  /* drop-shadow applies the glow to the actual shapes in a transparent PNG, instead of a box outline! */
+  filter: drop-shadow(0 0 30px var(--hydro-glow))
+}
+
+/* Blur the logo out with the rest of the layout when the navigation wheel is opened */
+body.menu-active .logo {
+  filter: blur(8px);
+  pointer-events: none;
+}
+
+/* Mobile responsive adjustments */
+@media screen and (max-width: 600px) {
+  .logo {
+    top: 15px;
+    left: 15px;
+  }
+  .logo img {
+    width: 45px; /* Slightly smaller on phones */
+  }
+}
